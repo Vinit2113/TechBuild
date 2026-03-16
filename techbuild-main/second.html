@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- tailwind css cdn link  and fonts link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+     
+    <!-- google font: space grotesk link  -->
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+    </style>
+    <link rel="stylesheet" href="fonts.css">
+
+    <!-- linking remix-icon cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- linking the css file : first.css  -->
+    <link rel="stylesheet" href="css/second.css">
+</head>
+<body>
+        <header>
+        <div class="header-container">
+            <div class="inner-container-1">
+                <a href="#" class="logo-container">
+                    <div class="logo-img-container">
+                        <img src="./images/first-images/logo.png" alt="logo">
+                    </div>
+                    <h2>TechBuild</h2>
+                </a>
+                    
+            </div>
+            <div class="inner-container-2">
+                <input type="text" name="" id="" placeholder="Search for CPUs, GPUs, or Components">
+                <button><i class="ri-search-line"></i></button>
+            </div>
+            <div class="inner-container-3">
+               
+                <button class="login-btn">
+                    login 
+                </button>
+                <button class="register-btn">
+                    register
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+    
+        <section class="product-section">
+            <div class="product-container">
+             
+                <!-- product aside filter section  -->
+                <aside class="product-filter" id="aside">
+
+                </aside>
+               
+                <!-- product-header section  -->
+                <div class="product-listing-container" id="main-content">
+                    <div class="product-header-container">
+                        <div class="product-title-container">
+                            <h1>Graphics Cards</h1>
+                            <p>showing 1-12 of 124 products</p>
+                        </div>
+                      
+                        <div class="product-price-range-container"> 
+                            <div class="para-container">
+                                <p>Sort by</p>
+                            </div>
+                                <select name="" id="">
+                                    <option value="">Select Range</option>
+                                    <option value="">Price: Low to High</option>
+                                    <option value="">Price: High to Low</option>
+                                </select> 
+                         </div>
+                    </div>
+                   
+                    <!-- product card section  -->
+                    <div class="product-card-container">
+                     
+                      <div class="card-container">
+
+                            <div class="card-img-container">
+                                <img src="./images/second-images/product-filter-section-product-card-img.png" alt="">
+                            </div>
+
+                              <div class="card-rating-container">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-line"></i>
+                              </div>
+                              
+                            <div class="card-title-container">
+                                <h2>AMD Ryzen 9 5900X</h2>
+                            </div>
+                           
+                            <div class="card-desc-container">
+                                <div class="desc-1-container">
+                                    <span>Chipset</span>
+                                    <p>GeForce RTX 4070 T</p>
+                                </div>
+                                <div class="desc-2-container">
+                                    <span>Memory</span>
+                                    <p>12 GB GDDR6X</p>
+                                </div>
+                                <div class="desc-3-container">
+                                    
+                                    <span>Core clock</span>
+                                    <p>2310 MHz</p>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="card-price-container">
+                                <p>
+                                    <span class="rupee-icon">₹</span> 
+                                    <span class="total-price">55,000</span>
+                                </p>
+                                <button class="icon-container">
+                                  <i class="ri-shopping-cart-2-line header-icon"></i>
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+   
+</body>
+</html>
