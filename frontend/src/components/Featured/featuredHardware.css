@@ -1,0 +1,147 @@
+.featured-hardware-section {
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 3rem;
+
+}
+
+.featured-hardware-section>.featured-hardware-container {
+  min-height: 550px;
+  width: 100%;
+  /* background-color: lightgray; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  overflow-x: auto;
+  margin-bottom: 3rem;
+
+}
+
+.featured-hardware-section>.featured-hardware-container::-webkit-scrollbar {
+  display: none;
+}
+
+.featured-hardware-section>.featured-hardware-container>.featured-hardware-title-container {
+  height: 10%;
+  width: 100%;
+  /* background-color: white; */
+  display: flex;
+  align-items: center;
+}
+
+.featured-hardware-section>.featured-hardware-container>.featured-hardware-title-container>h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1E293B;
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container {
+  min-height: 80%;
+  width: 100%;
+  /* background-color: black; */
+  white-space: nowrap;
+
+
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card {
+  background-color: #FFFFFF;
+  min-height: 100%;
+  width: 20%;
+  border-radius: 24px;
+  padding: 1.25rem;
+  box-shadow: 5px 5px 10px #94A3B8;
+  display: inline-block;
+  margin-right: 1.5rem;
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-img-container {
+  height: 50%;
+  width: 100%;
+  background-color: #F8FAFC;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-img-container>.heart-container {
+    height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: #FFFFFF;
+      box-shadow: 0 10px 30px #F1F5F9;
+        margin-left: 20px;
+          margin-bottom: 15px;
+
+}
+
+.icon-style {
+  background-color: transparent;
+  border: none;
+  font-size: large;
+
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-img-container>.heart-container>button>i {
+  color: #94A3B8;
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-title-container {
+  /* background-color: red; */
+  white-space: normal;
+
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-title-container>h3 {
+  color: #6BB6B0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-desc-container {
+  /* background-color: blue; */
+  margin: 1.20rem 0rem;
+  white-space: normal;
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-desc-container>p {
+  color: #1E293B;
+  font-size: 1.25rem;
+  line-height: 1.35rem;
+  font-weight: 800;
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-rating-container {
+  /* background-color: green; */
+  margin-bottom: 1.5rem;
+  white-space: normal;
+
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-rating-container>i {
+  color: gold;
+
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-price-container {
+  /* background-color: yellow;    */
+  white-space: normal;
+
+}
+
+.featured-hardware-section>.featured-hardware-container>.hardware-card-container>.hardware-card>.hardware-price-container>p {
+  color: #0F172A;
+  font-size: 1.5rem;
+  font-weight: bold;
+}

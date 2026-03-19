@@ -132,8 +132,8 @@ const SignupPage = () => {
               <input type={showPassword ? "text" : "password"} name="password" value={formData.password} onChange={handleChange} className="textbox" placeholder=" " />
               <label>Password</label>
               <span className='' onClick={togglePasword}> {showPassword ?
-                <FaRegEyeSlash class="ri-eye-close-line" id="eye-icon" /> :
-                <FaRegEye class="ri-eye-close-line" id="eye-icon" />
+                <FaRegEyeSlash className="ri-eye-close-line" id="eye-icon" /> :
+                <FaRegEye className="ri-eye-close-line" id="eye-icon" />
               }
               </span>
 

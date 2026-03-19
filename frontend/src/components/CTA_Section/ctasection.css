@@ -1,0 +1,102 @@
+.custom-pc-cta-section {
+  width: 100%;
+  height: fit-content;
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container {
+  height: 500px;
+  width: 100%;
+  padding: 2rem;
+  border: 1px solid rgba(107, 182, 176, 0.2);
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  background-color: #FFFFFF;
+  background-image: url('../../assets/hero_section/custom-pc-cta-bg.png');
+  overflow: hidden;
+
+
+  position: relative;
+  /* needed for z-index */
+
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container>.bigger-circle {
+
+  height: 800px;
+  width: 800px;
+  border-radius: 50%;
+  border: 4px solid rgba(107, 182, 176, 0.1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  /* important */
+  z-index: 1;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container>.bigger-circle>.smaller-circle {
+  height: 500px;
+  width: 500px;
+  border-radius: 50%;
+  border: 3px solid rgba(107, 182, 176, 0.1);
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container>.cta-content-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: lightcoral; */
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container>.cta-content-container>.img-container {
+  /* background-color: red; */
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container>.cta-content-container>.para-1-container {
+  /* background-color: blue; */
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container>.cta-content-container>.para-1-container>p {
+  font-size: 3rem;
+  color: #1E293B;
+  font-weight: bold;
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container>.cta-content-container>.para-2-container {
+  /* background-color: green; */
+  width: 30%;
+  text-align: center;
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container>.cta-content-container>.para-2-container>p {
+  color: #64748B;
+  line-height: 1.7rem;
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container>.cta-content-container>.button-container {
+  /* background-color: yellow; */
+  border-radius: 30px;
+}
+
+.custom-pc-cta-section>.custom-pc-cta-container>.cta-content-container>.button-container>button {
+  padding: 1rem 2rem;
+  border-radius: 24px;
+  font-size: medium;
+  background-color: #1E293B;
+  color: #FFFFFF;
+  font-weight: bold;
+}
