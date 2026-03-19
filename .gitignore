@@ -6,3 +6,4 @@ techbuild-main/
 ./backend/.env
 ./backend/node_modules
 temp.js
+temp.css
