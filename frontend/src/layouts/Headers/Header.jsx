@@ -12,6 +12,15 @@ import './header.css';
 const Header = () => {
   const navigate = useNavigate()
 
+
+  // GET THE SUER NAME FORM TOKEN CONVERT IT TO JSON OBJECT THEN DISPLAY
+  const user = JSON.parse(localStorage.getItem("user"))
+  console.log("User object: ", user);
+
+  // TO DISPALY THE NAME IN THE PROPER FORMAT
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
+
   return (
     <>
       <header>
@@ -47,12 +56,22 @@ const Header = () => {
             <div className="header-icon-style">
               <BsCart3 />
             </div>
-            <div
-              className="header-icon-style"
-              onClick={() => navigate("/login")}
-            >
-              <FaRegUser />
-            </div>
+            {user ? (
+              <div
+                className="header-user"
+                onClick={() => navigate("/profile")}
+              >
+                <span className="username-shown"> Hello, {capitalize(user.firstName) ? `${capitalize(user.firstName)} ${capitalize(user.lastName)}` : "My Profile"}
+                </span>
+              </div>
+            ) : (
+              <div
+                className="header-icon-style"
+                onClick={() => navigate("/login")}
+              >
+                <FaRegUser />
+              </div>
+            )}
           </div>
         </div>
       </header>

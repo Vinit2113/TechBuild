@@ -27,7 +27,9 @@ const LoginPage = () => {
 
 
       if (response.data.token) {
-        localStorage.setItem("token", response.data.token)
+        // Option 2: separate keys
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
       }
 
       toast.success("Logged in Successfully")
@@ -80,6 +82,7 @@ const LoginPage = () => {
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Password"
+              autoComplete=''
               name='password'
               onChange={handleChange}
               value={password}
@@ -87,14 +90,11 @@ const LoginPage = () => {
               id="lock_input"
             />
             <span className='' onClick={togglePassword}> {showPassword ?
-              <FaRegEyeSlash class="ri-eye-close-line" id="eye-icon" /> :
-              <FaRegEye class="ri-eye-close-line" id="eye-icon" />
+              <FaRegEyeSlash id="eye-icon" /> :
+              <FaRegEye id="eye-icon" />
             }
             </span>
-            <i
-              className="ri-lock-fill input-icon"
-              id="lock_icon"
-            ></i>
+
           </div>
 
 

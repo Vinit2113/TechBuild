@@ -73,7 +73,12 @@ const registerUser = async (req, res) => {
 
     return res
       .status(201)
-      .json({ message: "User created successfully", token });
+      .json({ message: "User created successfully", token, user: {
+        id: result.insertId,
+        firstName: first_name,
+        lastName: last_name,
+        email,
+      } });
   } catch (error) {
     console.log(error);
 

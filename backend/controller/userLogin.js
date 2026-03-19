@@ -6,7 +6,6 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     console.log("email", email, "password", password);
-    
 
     // Input validation
     if (!email || !password) {
@@ -41,8 +40,14 @@ const loginUser = async (req, res) => {
     });
 
     return res.status(200).json({
-      message: "gin successful",
+      message: "Login successful",
       token,
+      user: {
+        id: user.id,
+        firstName: user.first_name,
+        lastName: user.last_name,
+        email: user.email,
+      },
     });
   } catch (error) {
     console.error(error);
