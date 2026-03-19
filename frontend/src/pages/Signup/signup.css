@@ -1,17 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Space Grotesk", sans-serif;
-}
-
-html,
-body {
-  min-height: 100vh;
-  width: 100%;
-  color: white;
-}
-
 /* background video */
 
 .bg-video {
@@ -25,6 +11,19 @@ body {
 
 .password-box {
   position: relative;
+}
+
+.eye-container{
+    position: relative;
+}
+#eye-icon{
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+
 }
 
 .toggle-password {
@@ -258,14 +257,15 @@ label {
   justify-content: center;
 }
 
-a {
+.nav-login {
   color: #00e5ff;
   font-weight: 600;
   transition: .3s;
   text-decoration: none;
+  cursor: pointer;
 }
 
-a:hover {
+.nav-login:hover {
   text-decoration: underline;
   text-shadow:
     0 0 5px #00e5ff,

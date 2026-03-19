@@ -1,12 +1,19 @@
 import axios from 'axios';
 import { useState } from "react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { useNavigate } from 'react-router';
 import { toast, ToastContainer } from "react-toastify";
 
+
 import bg_video from "../../assets/signup_bg_video.mp4";
+console.log('found', bg_video);
+
 // frontend\src\assets\gfx - video - background.mp4
 import "./signup.css";
 
 const SignupPage = () => {
+
+  const [showPassword, setShowPassword] = useState(false)
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -18,6 +25,9 @@ const SignupPage = () => {
 
   })
 
+  const navigate = useNavigate()
+
+  // DATA SENDING TO BACKEND 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -35,6 +45,17 @@ const SignupPage = () => {
 
       toast.success("Signup successfully")
 
+      setFormData({
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone: "",
+        password: "",
+        TnC: false,
+      });
+
+      navigate('/')
+
     } catch (error) {
       console.log("Error", error.response?.data || error.message);
 
@@ -46,11 +67,17 @@ const SignupPage = () => {
   const handleChange = (e) => {
     const { name, type, value, checked } = e.target;
 
+    // State updater funciton it update the use state's data based on the user input 
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value,
     });
   };
+
+  // CONST TOGGLE PASSWORD
+  const togglePasword = () => {
+    setShowPassword(!showPassword)
+  }
   return (
     <>
       <ToastContainer />
@@ -101,9 +128,16 @@ const SignupPage = () => {
             </div>
 
             {/* PASSWORD */}
-            <div className="input-box">
-              <input type="password" name="password" value={formData.password} onChange={handleChange} className="textbox" placeholder=" " />
+            <div className="input-box eye-container">
+              <input type={showPassword ? "text" : "password"} name="password" value={formData.password} onChange={handleChange} className="textbox" placeholder=" " />
               <label>Password</label>
+              <span className='' onClick={togglePasword}> {showPassword ?
+                <FaRegEyeSlash class="ri-eye-close-line" id="eye-icon" /> :
+                <FaRegEye class="ri-eye-close-line" id="eye-icon" />
+              }
+              </span>
+
+              <i ></i>
             </div>
 
             {/* <p className="password-hint">
@@ -129,7 +163,7 @@ const SignupPage = () => {
 
             <div className="link-box">
               <p>
-                Already have an account? <a href="#">Login</a>
+                Already have an account? <span className='nav-login' onClick={() => navigate('/login')}>Login</span>
               </p>
             </div>
           </form>
