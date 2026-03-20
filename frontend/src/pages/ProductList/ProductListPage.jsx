@@ -1,9 +1,10 @@
+import 'remixicon/fonts/remixicon.css';
 import ProductFilters from '../../components/ProductListing/productfilters/ProductFilters';
 import Footer from '../../layouts/Footers/Footer';
 import Header from '../../layouts/Headers/Header';
 import './productListPage.css';
 
-const ProductListPaage = () => {
+const ProductListPage = () => {
   return (
     <>
       <Header />
@@ -138,9 +139,11 @@ const ProductListPaage = () => {
           </div>
         </section>
       </section>
+
+      
       <Footer />
     </>
   );
 };
 
-export default ProductListPaage;
+export default ProductListPage;
