@@ -13,16 +13,17 @@
   position: relative;
 }
 
-.eye-container{
-    position: relative;
+.eye-container {
+  position: relative;
 }
-#eye-icon{
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
+
+#eye-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
 
 }
 
@@ -155,7 +156,7 @@ body::before {
 
 /* floating labels */
 
-label {
+.signup-label {
   position: absolute;
   top: 50%;
   left: 20px;

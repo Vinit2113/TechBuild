@@ -45,7 +45,7 @@ const Header = () => {
           </div>
 
           <div className="inner-container-3">
-            <button>
+            <button className="inner-container-3-button">
               <div className="inner-btn-cont-1">
                 <img src="./images/screw-driver.png" alt="" />
               </div>

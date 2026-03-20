@@ -97,20 +97,20 @@ const SignupPage = () => {
             <div className="input-split-box">
               <div className="split-field">
                 <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} required className="textbox" placeholder=" " />
-                <label>First name</label>
+                <label className='signup-label'>First name</label>
               </div>
 
               {/* LAST NAME */}
               <div className="split-field">
                 <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} required className="textbox" placeholder=" " />
-                <label>Last name</label>
+                <label className='signup-label'>Last name</label>
               </div>
             </div>
 
             {/* EMAIL */}
             <div className="input-box">
               <input type="email" name="email" value={formData.email} onChange={handleChange} required className="textbox" placeholder=" " />
-              <label>Email</label>
+              <label className='signup-label'>Email</label>
             </div>
 
             {/* PHONE */}
@@ -124,13 +124,13 @@ const SignupPage = () => {
                 className="textbox"
                 placeholder=" "
               />
-              <label>Phone number</label>
+              <label className='signup-label'>Phone number</label>
             </div>
 
             {/* PASSWORD */}
             <div className="input-box eye-container">
               <input type={showPassword ? "text" : "password"} name="password" value={formData.password} onChange={handleChange} className="textbox" placeholder=" " />
-              <label>Password</label>
+              <label className='signup-label'>Password</label>
               <span className='' onClick={togglePasword}> {showPassword ?
                 <FaRegEyeSlash className="ri-eye-close-line" id="eye-icon" /> :
                 <FaRegEye className="ri-eye-close-line" id="eye-icon" />

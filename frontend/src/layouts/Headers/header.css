@@ -168,7 +168,7 @@ header {
   font-size: 20px;
 }
 
-.header-container>.inner-container-3>button {
+.header-container>.inner-container-3>.inner-container-3-button {
   background-color: #6BB6B0;
   display: flex;
   border: none;
