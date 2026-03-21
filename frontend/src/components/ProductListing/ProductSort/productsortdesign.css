@@ -1,0 +1,77 @@
+.product-details-container>.shortlist-container {
+  /* background-color: lightcoral; */
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding-right: 1rem;
+  border-bottom: 2px solid #E2E8F0;
+
+}
+
+.product-details-container>.shortlist-container>.product-title-result-container {
+  /* background-color: violet; */
+}
+
+.product-details-container>.shortlist-container>.product-title-result-container>.product-list-title {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #1E293B;
+}
+
+.product-details-container>.shortlist-container>.product-title-result-container>.product-result {
+  font-size: 1rem;
+  color: #64748B;
+}
+
+.product-details-container>.shortlist-container>.dropdown {
+  /* background-color: violet; */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown .dropdown-shortlist-result-title {
+  font-size: 1rem;
+  color: #64748B;
+}
+
+/* remove default arrow */
+.dropdown select {
+  padding: 0.5rem 2.5rem 0.5rem 1.2rem;
+  border-radius: 0.8rem;
+  outline: none;
+  border: 1px solid #ccc;
+  appearance: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: #1E293B;
+  font-weight: 600;
+}
+
+
+/* remix icon */
+.dropdown-icon {
+  font-family: 'remixicon';
+  color: #1E293B;
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+/* rotate icon when active */
+.dropdown select:focus+.dropdown-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
