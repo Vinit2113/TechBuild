@@ -1,0 +1,52 @@
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.main-image {
+  width: 688px;
+  height: 515px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.main-media {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* preserves image/video aspect ratio */
+  border-radius: 12px;
+  background: #fff;
+  /* optional padding color */
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.lst-img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s ease;
+}
+
+.lst-img.video {
+  object-fit: cover;
+}
+
+.lst-img.active {
+  border: 2px solid #007bff;
+  /* highlight active thumbnail */
+}

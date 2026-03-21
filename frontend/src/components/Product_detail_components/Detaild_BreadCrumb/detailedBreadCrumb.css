@@ -1,0 +1,11 @@
+.breadcrumb {
+  margin-bottom: 1.5rem;
+  color: #64748b;
+  padding-left: 1rem;
+}
+
+.breadcrumb .active {
+
+  font-weight: 600;
+  color: #1e293b;
+}

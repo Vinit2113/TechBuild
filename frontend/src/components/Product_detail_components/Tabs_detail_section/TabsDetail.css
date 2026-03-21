@@ -1,0 +1,52 @@
+.tabs {
+  margin-top: 1rem;
+  font-size: medium; /* Slightly bigger for tab text */
+  font-weight: 600; /* Bold for active tab text */
+  padding-left: 2rem;
+  display: flex;
+  gap: 3rem; /* spacing between tabs - adjust to match your Figma */
+  border-bottom: 2px solid #d1d5db; /* light gray border */
+  align-items: center;
+}
+
+.tabs span {
+  padding: 0.5rem 0; /* vertical padding only for neat spacing */
+  cursor: pointer;
+  position: relative;
+  color: #6b7280; /* inactive tab text color - gray */
+  font-weight: 400; /* normal for inactive tabs */
+  transition: color 0.3s ease;
+}
+
+.tabs span.active {
+  color: #3b82f6; /* blue color for active tab */
+  font-weight: 700;
+}
+
+/* Active tab underline */
+.tabs span.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 3px; /* thicker underline for better visibility */
+  background-color: #3b82f6; /* blue underline */
+  border-radius: 2px 2px 0 0; /* slightly rounded edges */
+}
+
+/* Hover effect for inactive tabs */
+.tabs span:not(.active):hover {
+  color: #2563eb; /* darker blue on hover */
+}
+
+.tabs span:not(.active):hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 3px;
+  background-color: #bfdbfe; /* lighter blue underline on hover */
+  border-radius: 2px 2px 0 0;
+}

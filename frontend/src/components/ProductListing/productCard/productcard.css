@@ -121,7 +121,7 @@
   color: #1E293B;
 }
 
-.rupees-cart-container>.cart-button {
+.rupees-cart-container>.button-group>.cart-button {
   background-color: #3B82F6;
   padding: 0.5rem 1.5rem;
   border-radius: 5px;
@@ -129,11 +129,32 @@
 
 }
 
-.rupees-cart-container>.cart-button:hover {
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-button {
+  background-color: transparent;
+  border: 2px solid #3B82F6;
+  color: #3B82F6;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.view-button:hover {
+  background-color: #3B82F6;
+  color: white;
+}
+
+.rupees-cart-container>.button-group> .cart-button:hover {
   background-color: #15315e;
 }
 
-.rupees-cart-container>.cart-button>i {
+.rupees-cart-container>.button-group>.cart-button>i {
   font-size: 1rem;
   color: white;
 }

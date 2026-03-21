@@ -1,0 +1,67 @@
+.spec-section {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: red; */
+  /* padding: 0rem 10rem; */
+}
+
+.spec-container {
+  width: 70%;
+  /* background-color: #3b82f6; */
+}
+
+.spec-section h2 {
+  /* align-self: flex-start; */
+  /* background-color: black; */
+  font-size: 25px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 2rem 1rem;
+}
+
+/* TABLE CONTAINER */
+.table {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+
+/* EACH ROW */
+.table div {
+  display: grid;
+  grid-template-columns: 10fr 50fr;
+  padding: 1rem 1.5rem;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+
+/* REMOVE LAST BORDER */
+.table div:last-child {
+  border-bottom: none;
+}
+
+/* LEFT SIDE (LABEL) */
+.table div span:first-child {
+  color: #475569;
+  font-size: medium;
+}
+
+/* RIGHT SIDE (VALUE) */
+.table div span:last-child {
+  text-align: right;
+  color: #1e293b;
+  font-weight: 500;
+  font-size: medium;
+}
+
+/* ZEBRA EFFECT (like your UI) */
+.table div:nth-child(even) {
+  background-color: #f8fafc;
+}

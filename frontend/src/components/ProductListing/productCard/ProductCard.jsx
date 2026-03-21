@@ -1,5 +1,5 @@
-import './productcard.css'
 import productImage from '../../../assets/product_list/product_filter_section_product_card_img.png'
+import './productcard.css'
 
 const ProductCard = () => {
   return (
@@ -66,9 +66,15 @@ const ProductCard = () => {
                   <span>12,000</span>
                 </p>
 
-                <button className='cart-button'>
-                  <i className="ri-shopping-cart-2-line header-icon"></i>
-                </button>
+                <div className='button-group'>
+                  <button className='view-button'>View
+
+                  </button>
+                  <button className='cart-button'>
+                    <i className="ri-shopping-cart-2-line header-icon"></i>
+                  </button>
+                </div>
+
               </div>
             </div>
           </div>

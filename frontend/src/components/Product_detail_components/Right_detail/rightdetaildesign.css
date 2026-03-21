@@ -1,0 +1,111 @@
+.right {
+  flex: 1;
+  color: #000000;
+}
+
+.right .product-detail-title {
+  font-size: 26px;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.rating {
+  margin-bottom: 1rem;
+}
+
+.rating .rating-span .rating-span-icon {
+  color: gold;
+}
+
+.rating .total-review {
+  color: #64748b;
+  margin-left: 10px;
+}
+
+.stock {
+  margin-left: 10px;
+  color: green !important;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* SPECS */
+.spec-box {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.spec-box p {
+  margin-bottom: 5px;
+}
+
+/* CART */
+.cart-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.qty {
+  display: flex;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.qty .qty-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #e2e8f0;
+  cursor: pointer;
+}
+
+.qty .qty-value {
+  padding: 0.5rem 1rem;
+}
+
+.add-btn {
+  /* font-size: 16px; */
+  font-size: large;
+  flex: 1;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.out-of-stock {
+  color: red;
+}
+
+.add-btn:hover {
+  background-color: #6da4fc;
+  color: black;
+  /* fixed from #black */
+}
+
+.compat-btn {
+  font-size: large;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #3b82f6;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.compat-btn:hover {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}

@@ -2,6 +2,8 @@ import { BsCart3 } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 
+import screwDriverImg from '../../assets/screw-driver.png';
+
 
 
 import { useNavigate } from 'react-router';
@@ -47,7 +49,7 @@ const Header = () => {
           <div className="inner-container-3">
             <button className="inner-container-3-button">
               <div className="inner-btn-cont-1">
-                <img src="./images/screw-driver.png" alt="" />
+                <img src={screwDriverImg} alt="" />
               </div>
               <div className="inner-btn-cont-2">
                 <span className="pc-build">Build Your PC</span>
