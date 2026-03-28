@@ -35,7 +35,7 @@ const CategorySection = () => {
               </div>
               <div className="card-desc">
                 <p>
-                  High-performance processors for demanding applications.
+                  High-performance processors for demanding applications. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti aliquid odio quis pariatur tenetur accusamus, optio esse, incidunt officia laudantium possimus eos maxime dolore qui sit voluptatem ex voluptatum dolorum!
                 </p>
               </div>
             </div>

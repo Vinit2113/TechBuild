@@ -1,14 +1,13 @@
-const { poolConn } = require("../db/dbConfig");
+const { poolConn } = require("../../db/dbConfig");
 const argon2 = require("argon2");
-const generateToken = require("../utils/generateToken");
-const ROLES = require("../constants/rolesConstants");
+const generateToken = require("../../utils/generateToken");
+const ROLES = require("../../constants/rolesConstants");
 
 const registerUser = async (req, res) => {
   try {
     const { first_name, last_name, email, phone, password, is_verified, role } =
       req.body;
 
-    console.log(first_name);
 
     // INPUT VALIDATION
     if (!first_name || !last_name || !email || !password) {
@@ -31,6 +30,8 @@ const registerUser = async (req, res) => {
     }
 
     if (existingEmail.length > 0 || existingPhone.length > 0) {
+
+
       return res
         .status(409)
         .json({ message: "User already exists. Try log-in !" });
@@ -59,7 +60,7 @@ const registerUser = async (req, res) => {
         first_name,
         last_name,
         email,
-        phone,
+        phone || null,
         hashedPassword,
         is_verified || false,
         userRole,
@@ -71,14 +72,16 @@ const registerUser = async (req, res) => {
 
     // console.log(result);
 
-    return res
-      .status(201)
-      .json({ message: "User created successfully", token, user: {
+    return res.status(201).json({
+      message: "User created successfully",
+      token,
+      user: {
         id: result.insertId,
         firstName: first_name,
         lastName: last_name,
         email,
-      } });
+      },
+    });
   } catch (error) {
     console.log(error);
 

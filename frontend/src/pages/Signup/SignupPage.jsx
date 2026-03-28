@@ -6,7 +6,6 @@ import { toast, ToastContainer } from "react-toastify";
 
 
 import bg_video from "../../assets/signup_bg_video.mp4";
-console.log('found', bg_video);
 
 // frontend\src\assets\gfx - video - background.mp4
 import "./signup.css";

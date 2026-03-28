@@ -1,6 +1,6 @@
 const argon2 = require("argon2");
-const generateToken = require("../utils/generateToken");
-const { poolConn } = require("../db/dbConfig");
+const generateToken = require("../../utils/generateToken");
+const { poolConn } = require("../../db/dbConfig");
 
 const loginUser = async (req, res) => {
   try {
