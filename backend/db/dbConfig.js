@@ -2,7 +2,7 @@ const mysql = require("mysql2/promise");
 const userTableQuery = require("../models/user.model");
 const navCategoriesTableQuery = require("../models/navCategories.model");
 const categoryTableQuery = require("../models/category.model");
-const subCatTableQuery = require("../models/subCategory.model");
+
 require("dotenv").config();
 
 const poolConn = mysql.createPool({
@@ -15,12 +15,7 @@ const poolConn = mysql.createPool({
   waitForConnections: true,
 });
 
-const tables = [
-  userTableQuery,
-  navCategoriesTableQuery,
-  categoryTableQuery,
-  subCatTableQuery,
-];
+const tables = [userTableQuery, navCategoriesTableQuery, categoryTableQuery];
 (async () => {
   try {
     for (const table of tables) {

@@ -7,3 +7,5 @@ techbuild-main/
 ./backend/node_modules
 temp.js
 temp.css
+temp.html
+db_tables.md

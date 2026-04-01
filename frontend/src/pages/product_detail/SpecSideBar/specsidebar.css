@@ -1,0 +1,89 @@
+.spec-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 750px;
+  background-color: white;
+  z-index: 2001;
+  padding: 2rem;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+
+  /* Animation Logic */
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+
+button {
+  background-color: transparent;
+  background-image: none;
+  cursor: pointer;
+  border: none;
+}
+
+button>i {
+  font-size: large;
+}
+
+.spec-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.spec-sidebar.active {
+  transform: translateX(0);
+}
+
+/* 3. Header & List Styling */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar-header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.sidebar-specs-list h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  color: #43716e;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+  text-decoration: underline;
+}
+
+.sidebar-specs-list ul {
+  list-style: none;
+}
+
+.sidebar-specs-list ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Zebra striping inside the sidebar */
+.sidebar-specs-list ul li:nth-child(even) {
+  background-color: #f1f8ff;
+  margin: 0 -2rem;
+  /* Pulls background to edges of sidebar */
+  padding: 1.25rem 2rem;
+}
+
+.sidebar-specs-list span:first-child {
+  color: #64748b;
+}
+
+.sidebar-specs-list span:last-child {
+  font-weight: 600;
+  color: #1e293b;
+}

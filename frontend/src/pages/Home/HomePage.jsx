@@ -15,7 +15,7 @@ const HomePage = () => {
       < Header />
 
       {/* NAVBAR */}
-      < NavBar />
+      < NavBar /> 
 
       <main>
         {/* Hero Section */}
@@ -37,7 +37,7 @@ const HomePage = () => {
       </main>
 
       {/* FOOTER */}
-        <Footer />
+      <Footer />
     </>)
 }
 

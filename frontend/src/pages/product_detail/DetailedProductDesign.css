@@ -1,19 +1,76 @@
-/* BREADCRUMB */
-
-/* LAYOUT */
-.product-container {
-  display: flex;
-  gap: 2rem;
-  padding: 0rem 2rem;
+.product-detail-section {
+  width: 100%;
 }
 
-/* LEFT */
+.product-detail-section>.product-detail-container {
+  /* min-height: 80vh; */
+  /* width: 100%;
+    background-color: white;
+    display: flex;  
+    align-items: flex-start;
+    position: relative; */
 
 
-/* RIGHT */
+  display: flex;
+  width: 100%;
+  background-color: white;
+  align-items: flex-start;
+  /* CRITICAL: Prevents columns from being the same height */
+  position: relative;
+  padding: 0rem 2rem;
+  /* Give the whole section some breathing room */
+
+}
+
+.breadcrumb-product-images-container {
+  /* min-height: 100%; */
+  height: 800px;
+  overflow: hidden;
+  overflow-y: auto;
+  width: 60%;
+  /* background-color: lightblue; */
+  display: flex;
+  flex-direction: column;
+}
+
+.breadcrumb-product-images-container::-webkit-scrollbar {
+  display: none;
+}
+
+.btn-see-specs {
+  width: 100%;
+  padding: 1rem;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 1.5rem 0rem;
+}
+
+.btn-see-specs:hover {
+  background-color: #e2e8f0;
+}
 
 
+.spec-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
 
-/* SECTION TITLE */
-
-
+.spec-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}

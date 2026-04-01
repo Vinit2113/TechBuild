@@ -6,7 +6,7 @@ const port = process.env.PORT;
 const userRoutes = require("./routes/user.routes");
 const navCatRoutes = require("./routes/navCat.routes");
 const catRoutes = require("./routes/cat.routes");
-const subCatRoutes = require("./routes/subCat.routes");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +21,6 @@ app.use(
 app.use("/user/", userRoutes);
 app.use("/nav-cat/", navCatRoutes);
 app.use("/cat/", catRoutes);
-app.use("/sub-cat/", subCatRoutes);
 
 app.listen(port, () => {
   console.log(`SERVER IS RUNNING ON PORT ${port}`);

@@ -1,67 +1,74 @@
-.spec-section {
-  margin-bottom: 20px;
+.product-specification-container {
   width: 100%;
+  padding: 2rem 1rem;
+  background-color: white;
+  border-top: 1px solid #ddd;
+}
+
+.specification-title {
   display: flex;
-  flex-direction: column;
+  gap: 2rem;
+  justify-content: start;
   align-items: center;
+  height: fit-content;
   /* background-color: red; */
-  /* padding: 0rem 10rem; */
+  margin-bottom: 1rem;
 }
 
-.spec-container {
-  width: 70%;
-  /* background-color: #3b82f6; */
+.specification-title h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* background-color: blue; */
+  height: 100%;
+  color: #0F172A;
 }
 
-.spec-section h2 {
-  /* align-self: flex-start; */
-  /* background-color: black; */
-  font-size: 25px;
+.specification-title a {
+  height: 100%;
+  /* background-color: yellow; */
+  color: #6B7280;
+  transition: all 0.4s ease;
+}
+
+.specification-title a:hover {
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.specification-lists h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0.75rem;
+
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  color: #68A09C;
+
+}
+
+/* Base style for all list items (Default / Odd rows) */
+.specification-lists ul>li {
+  list-style: none;
+
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.specification-lists ul>li:nth-child(even) {
+  background-color: #edffed;
+  /* Your blue tint for even rows */
+  background-color: #f4f9ff;
+}
+
+.specification-lists ul>li span:first-child {
+  color: #64748b;
+  text-transform: capitalize;
+}
+
+.specification-lists ul>li span:last-child {
   font-weight: 600;
   color: #1e293b;
-  margin: 2rem 1rem;
-}
-
-/* TABLE CONTAINER */
-.table {
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #e2e8f0;
-  width: 100%;
-}
-
-
-/* EACH ROW */
-.table div {
-  display: grid;
-  grid-template-columns: 10fr 50fr;
-  padding: 1rem 1.5rem;
-  align-items: center;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-
-/* REMOVE LAST BORDER */
-.table div:last-child {
-  border-bottom: none;
-}
-
-/* LEFT SIDE (LABEL) */
-.table div span:first-child {
-  color: #475569;
-  font-size: medium;
-}
-
-/* RIGHT SIDE (VALUE) */
-.table div span:last-child {
-  text-align: right;
-  color: #1e293b;
-  font-weight: 500;
-  font-size: medium;
-}
-
-/* ZEBRA EFFECT (like your UI) */
-.table div:nth-child(even) {
-  background-color: #f8fafc;
 }

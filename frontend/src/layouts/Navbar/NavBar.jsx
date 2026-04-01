@@ -1,67 +1,58 @@
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import SideBar from '../Sidbar/Sidebar';
 import "./navbar.css";
 
 const NavBar = () => {
   const [navCategories, setNavCategories] = useState([]);
+  const [isSliderOpen, setIsSliderOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState(null);
 
+  // FETCH MAIN CATEGORIES
   useEffect(() => {
     const fetchNavCat = async () => {
       try {
         const response = await axios.get(`http://localhost:54807/nav-cat/list`);
-
-        console.log("Here is fetched navbar category", response.data.data);
-
         setNavCategories(response.data.data);
       } catch (error) {
-        console.log("Failed to fetch categories", error);
+        console.error("Failed to fetch categories", error);
       }
     };
     fetchNavCat();
   }, []);
 
+  
+
   return (
-    <nav className="nav">
-      <ul>
-        {navCategories.map(category => (
-          <li key={category.nav_cat_id}>
-            <a href="#">
-              <i className={`${category.nav_cat_icon} nav-icon`}></i>
-              {category.nav_cat_name} {/* Fixed the typo here */}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      <nav className="nav">
+        <ul>
+          {navCategories.map(category => (
+            <li key={category.nav_cat_id}>
+              <a
+                href="#"
+                className="navlink"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveCategory(category);
+                  setIsSliderOpen(true);
+                }}
+              >
+                <i className={`${category.nav_cat_icon} nav-icon`}></i>
+                {category.nav_cat_name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <SideBar
+        isOpen={isSliderOpen}
+        onClose={() => setIsSliderOpen(false)}
+        category={activeCategory}
+      />
+    </>
   );
 };
 
 export default NavBar;
-
-{/* <ul>
-          <li>
-            <a href="#">
-              <i className="ri-gallery-view-2 nav-icon"></i> Components
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="ri-device-line nav-icon"></i> Pheripherals
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="ri-network-line nav-icon"></i> Networking
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="ri-macbook-line nav-icon"></i> Laptops
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="ri-percent-line nav-icon"></i> Deals
-            </a>
-          </li>
-        </ul> */}

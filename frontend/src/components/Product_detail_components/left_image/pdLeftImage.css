@@ -1,52 +1,64 @@
-.left {
+.product-images-container {
+  width: 100%;
+  background-color: white;
+  /* Clean look */
+  display: flex;
+  gap: 2rem;
+  /* More breathing room */
+  padding: 1rem;
+  align-items: flex-start;
+  /* Keeps thumbnails from stretching */
+}
+
+.thumbnail-images-container {
+  height: 100%;
+  max-height: 600px;
+  width: 15%;
+  /* border: 2px solid red; */
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
+
 }
 
-.main-image {
-  width: 688px;
-  height: 515px;
-  background: white;
-  border-radius: 12px;
+.thumbnail-images-container>.thumbnail-img {
+  width: 100%;
+  height: 100px;
+
+  background-color: #f1f8ff;
+
+  /* border: 1px solid royalblue; */
+  overflow: hidden;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+
+}
+
+.thumbnail-images-container>.thumbnail-img:hover {
+  outline: 1px solid royalblue;
+}
+
+.thumbnail-images-container>.thumbnail-img>img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.main-images {
+  flex: 1;
+  /* Takes remaining space naturally */
+  border: 1px solid #e2e8f0;
+  /* Softer border than black */
+  max-height: 600px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  background-color: #fff;
 }
 
-.main-media {
-  width: 100%;
-  height: 100%;
+.main-images img {
+  max-width: 100%;
+  height: auto;
   object-fit: contain;
-  /* preserves image/video aspect ratio */
-  border-radius: 12px;
-  background: #fff;
-  /* optional padding color */
-}
-
-.thumbnails {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 5px;
-}
-
-.lst-img {
-  width: 100px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border 0.2s ease;
-}
-
-.lst-img.video {
-  object-fit: cover;
-}
-
-.lst-img.active {
-  border: 2px solid #007bff;
-  /* highlight active thumbnail */
+  /* Prevents CPU box from being cropped */
 }
