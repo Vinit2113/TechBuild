@@ -1,28 +1,24 @@
 const productTableQuery = `
-CREATE TABLE IF NOT EXISTS products (
+CREATE TABLE IF NOT EXISTS techbuild.products (
     product_id INT AUTO_INCREMENT PRIMARY KEY,
-
-    -- Relationships
-    sub_category_id INT NOT NULL,
-    category_id INT NOT NULL,
-    brand_id INT,
-
-    -- Product information
+    cat_id INT NOT NULL,
+    brand_id INT NOT NULL,
     product_name VARCHAR(255) NOT NULL,
-    model VARCHAR(100),
-    description TEXT,
-    price DECIMAL(10,2) NOT NULL,
+    slug VARCHAR(255) NOT NULL UNIQUE,
+    short_description TEXT,
+    full_description TEXT,
+    sku VARCHAR(100) UNIQUE,
+    current_price DECIMAL(10,2) NOT NULL,
+    original_price DECIMAL(10,2),
+    discount_percentage DECIMAL(5,2),
     stock_quantity INT DEFAULT 0,
-    sku VARCHAR(50),
-    warranty_months INT,
-
-    -- Timestamps
+    is_active BOOLEAN DEFAULT TRUE,
+    softDelete BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-    -- Foreign keys
-    FOREIGN KEY (sub_category_id) REFERENCES sub_categories(sub_category_id),
-    FOREIGN KEY (category_id) REFERENCES categories(category_id),
-    FOREIGN KEY (brand_id) REFERENCES brands(brand_id)
+    -- Foreign Keys
+    CONSTRAINT fk_products_category FOREIGN KEY (cat_id) REFERENCES categories(cat_id),
+    CONSTRAINT fk_products_brand FOREIGN KEY (brand_id) REFERENCES brands(brand_id)
 );`;
 module.exports = { productTableQuery };
