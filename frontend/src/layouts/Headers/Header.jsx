@@ -6,7 +6,7 @@ import screwDriverImg from '../../assets/screw-driver.png';
 
 
 
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 import logo from '../../assets/logo/logo.png';
 import './header.css';
@@ -28,12 +28,12 @@ const Header = () => {
       <header>
         <div className="header-container">
           <div className="inner-container-1">
-            <a href="#" className="logo-container">
+            <Link to="/" className="logo-container">
               <div className="logo-img-container">
                 <img src={logo} alt="logo" />
               </div>
               <h2>TechBuild</h2>
-            </a>
+            </Link>
           </div>
 
           <div className="inner-container-2">
@@ -76,7 +76,7 @@ const Header = () => {
             )}
           </div>
         </div>
-      </header>
+      </header >
     </>
   )
 }

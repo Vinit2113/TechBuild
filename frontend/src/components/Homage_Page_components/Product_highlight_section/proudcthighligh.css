@@ -21,13 +21,13 @@
 
 .product-highlight-banner-section>.product-highlight-banner-container {
   width: 100%;
-  height: 400px;
+  height: 450px;
   background-color: #20293A;
   border-radius: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .product-highlight-banner-section>.product-highlight-banner-container>.left-container {

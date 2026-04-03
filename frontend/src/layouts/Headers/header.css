@@ -83,6 +83,8 @@ header {
   color: #1E293B;
   font-weight: bold;
   font-size: 22px;
+  padding-top: 2px;
+  padding-left: 2px;
 }
 
 .header-container>.inner-container-1>.logo-container>.logo-img-container>img {

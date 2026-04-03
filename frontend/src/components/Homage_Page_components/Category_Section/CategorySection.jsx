@@ -14,7 +14,7 @@ const CategorySection = () => {
                   <div className="category-link-icon-container">
                     <i className="ri-shapes-line"></i>
                   </div>
-                  <span>Shop by Category</span>
+                  <span> All Products </span>
                 </a>
               </li>
               <li>

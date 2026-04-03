@@ -1,20 +1,45 @@
-import productImage from '../../../assets/product_list/product_filter_section_product_card_img.png'
-import './productcard.css'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import productImage from '../../../assets/product_list/product_filter_section_product_card_img.png';
+import './productcard.css';
 
-const ProductCard = () => {
+const ProductCard = ({ categoryId }) => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        // Use categoryId instead of subCategoryId
+        const url = categoryId
+          ? `http://localhost:54807/product/list-by-category/${categoryId}`
+          : "http://localhost:54807/product/all-list";
+
+        const res = await axios.get(url);
+        setProducts(res.data.data); // Set fetched products in state
+      } catch (error) {
+        console.error("Error fetching products", error);
+      }
+    };
+
+    fetchProducts();
+  }, [categoryId]); // Re-fetch whenever category changes
+
   return (
-    <>
-      <div className="product-card-container">
-        {[1, 2, 3, 4].map((item) => (
-          <div className="card-container" key={item}>
+    <div className="product-card-container">
+      {products.length > 0 ? (
+        products.map((product) => (
+          <div className="card-container" key={product.product_id}>
             <div className="img-container">
               <img
-                src={productImage}
-                alt=""
+                className='img-setup'
+                src={product.images[0]?.media_url
+                  ? `http://localhost:54807${product.images[0].media_url}`
+                  : productImage
+                }
+                alt={product.product_name}
               />
             </div>
 
-            {/* PRODUCT CARD */}
             <div className="card-detail-container">
               <div className="rating-container">
                 <div className="starts-container">
@@ -31,31 +56,16 @@ const ProductCard = () => {
 
               <div className="title-desc-container">
                 <div className="title-container">
-                  <h2>AMD Ryzen 5900X</h2>
+                  <h2>{product.product_name}</h2>
                 </div>
-
                 <div className="desc-container">
                   <ul>
-                    <li>
-                      <p className="title">Architecture:</p>
-                      <p className="info">Zen 3</p>
-                    </li>
-                    <li>
-                      <p className="title">Core/threads:</p>
-                      <p className="info">12 cores / 24 Thread</p>
-                    </li>
-                    <li>
-                      <p className="title">Cache:</p>
-                      <p className="info">70MB</p>
-                    </li>
-                    <li>
-                      <p className="title">socket:</p>
-                      <p className="info">AM4</p>
-                    </li>
-                    <li>
-                      <p className="title">Cooler:</p>
-                      <p className="info">not included</p>
-                    </li>
+                    {product.specifications.slice(0, 5).map((spec) => (
+                      <li key={spec.spec_id}>
+                        <p className="title">{spec.spec_name}:</p>
+                        <p className="info">{spec.spec_value}</p>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -63,25 +73,24 @@ const ProductCard = () => {
               <div className="rupees-cart-container">
                 <p className='currency-price'>
                   <span>₹</span>
-                  <span>12,000</span>
+                  <span>{product.current_price}</span>
                 </p>
 
                 <div className='button-group'>
-                  <button className='view-button'>View
-
-                  </button>
+                  <button className='view-button'>View</button>
                   <button className='cart-button'>
                     <i className="ri-shopping-cart-2-line header-icon"></i>
                   </button>
                 </div>
-
               </div>
             </div>
           </div>
-        ))}
-      </div>
-    </>
-  )
-}
+        ))
+      ) : (
+        <p>No products found in this category.</p>
+      )}
+    </div>
+  );
+};
 
-export default ProductCard
+export default ProductCard;

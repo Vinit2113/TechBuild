@@ -1,8 +1,17 @@
 const { poolConn } = require("../../db/dbConfig");
 
-const getAllProductsWithImagesAndCategory = async (req, res) => {
+const getProductsByCategory = async (req, res) => {
   try {
-    const [rows] = await poolConn.execute(`
+    const { category_id } = req.params; // Get category_id from request params
+
+    if (!category_id) {
+      return res.status(400).json({
+        message: "category_id parameter is required",
+      });
+    }
+
+    const [rows] = await poolConn.execute(
+      `
       SELECT 
         p.product_id,
         p.cat_id,
@@ -41,25 +50,28 @@ const getAllProductsWithImagesAndCategory = async (req, res) => {
       LEFT JOIN product_media AS pm 
         ON p.product_id = pm.product_id
         AND pm.softDelete = 0
-      
+
       LEFT JOIN product_specifications AS ps
         ON p.product_id = ps.product_id
         AND ps.is_deleted = 0
-        
+
       WHERE p.softDelete = 0
+        AND p.cat_id = ?
       ORDER BY p.product_id DESC, pm.display_order ASC
-    `);
+      `,
+      [category_id],
+    );
 
     // 🔹 GROUP DATA
     const productMap = {};
 
     rows.forEach((row) => {
-      // Create product if not exists
       if (!productMap[row.product_id]) {
         productMap[row.product_id] = {
           product_id: row.product_id,
           cat_id: row.cat_id,
-          category_name: row.category_name || null,
+          category_name: row.cat_name || null,
+          category_description: row.cat_description || null,
           brand_id: row.brand_id,
           product_name: row.product_name,
           slug: row.slug,
@@ -76,7 +88,6 @@ const getAllProductsWithImagesAndCategory = async (req, res) => {
         };
       }
 
-      // Add image if exists
       if (row.media_id) {
         productMap[row.product_id].images.push({
           media_id: row.media_id,
@@ -101,16 +112,16 @@ const getAllProductsWithImagesAndCategory = async (req, res) => {
     const result = Object.values(productMap);
 
     return res.status(200).json({
-      message: "Products fetched successfully",
+      message: "Products fetched successfully for this category",
       count: result.length,
       data: result,
     });
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error("Error fetching products by category:", error);
     return res.status(500).json({
       message: "INTERNAL SERVER ERROR",
     });
   }
 };
 
-module.exports = getAllProductsWithImagesAndCategory;
+module.exports = getProductsByCategory;

@@ -40,6 +40,14 @@
   align-items: center;
 }
 
+.img-setup {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  /* or contain depending on need */
+  border-radius: 1rem;
+}
+
 .card-container>.card-detail-container {
   /* background-color: black; */
   border-bottom-left-radius: 1.5rem;
