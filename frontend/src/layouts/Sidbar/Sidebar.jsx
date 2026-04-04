@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from 'react-router';
 import './sidebar.css';
 
 const SideBar = ({ isOpen, onClose, category }) => {
@@ -112,7 +113,12 @@ const SideBar = ({ isOpen, onClose, category }) => {
           {subCategories.length > 0 ? (
             subCategories.map((sub) => (
               <li key={sub.cat_id}>
-                <a href={`/category/${sub.cat_id}`}>{sub.cat_name}</a>
+                <Link className='link'
+                  to={`/product/list/${sub.cat_id}`}
+                  onClick={onClose}
+                >
+                  {sub.cat_name}
+                </Link>
               </li>
             ))
           ) : (

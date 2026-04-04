@@ -68,7 +68,7 @@
    width: 100%;
  }
 
- .slider>ul>li>a {
+ .slider>ul>li>.link {
    text-decoration: none;
    font-size: 1.25rem;
    display: block;
@@ -79,7 +79,7 @@
    border-radius: 8px;
  }
 
- .slider>ul>li:hover>a {
+ .slider>ul>li:hover>.link {
    background-color: #a0ccffad;
    padding-left: 20px;
  }

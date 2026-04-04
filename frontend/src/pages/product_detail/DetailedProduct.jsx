@@ -10,6 +10,7 @@ import Header from '../../layouts/Headers/Header'
 import SpecSidebar from './SpecSideBar/SpecSideBar'
 
 
+import NavBar from '../../layouts/Navbar/NavBar'
 import './DetailedProductDesign.css'
 
 
@@ -28,9 +29,7 @@ const DetailedProduct = () => {
     <>
       {/* HEADER */}
       <Header />
-
-
-
+      <NavBar />
 
       <main>
         <section className='product-detail-section'>

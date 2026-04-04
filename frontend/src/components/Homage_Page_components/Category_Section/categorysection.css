@@ -20,7 +20,7 @@
 
 }
 
-.category-section>.category-header-container>ul>li>a {
+.category-section>.category-header-container>ul>li>.category-link {
   text-decoration: none;
   color: #475569;
   font-weight: bold;

@@ -1,28 +1,37 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import productImage from '../../../assets/product_list/product_filter_section_product_card_img.png';
 import './productcard.css';
 
-const ProductCard = ({ categoryId }) => {
+const ProductCard = () => {
   const [products, setProducts] = useState([]);
+
+  const { catId } = useParams();
+
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         // Use categoryId instead of subCategoryId
-        const url = categoryId
-          ? `http://localhost:54807/product/list-by-category/${categoryId}`
+        const url = catId
+          ? `http://localhost:54807/product/cat-list/${catId}`
           : "http://localhost:54807/product/all-list";
+
+
 
         const res = await axios.get(url);
         setProducts(res.data.data); // Set fetched products in state
+
+        console.log(res.data.data);
+
       } catch (error) {
         console.error("Error fetching products", error);
       }
     };
 
     fetchProducts();
-  }, [categoryId]); // Re-fetch whenever category changes
+  }, [catId]); // Re-fetch whenever category changes
 
   return (
     <div className="product-card-container">

@@ -6,11 +6,14 @@ import ProductFilters from '../../components/ProductListing/productfilters/Produ
 import Footer from '../../layouts/Footers/Footer';
 import Header from '../../layouts/Headers/Header';
 import './productListPage.css';
+import NavBar from '../../layouts/Navbar/NavBar';
 
 const ProductListPage = () => {
   return (
     <>
       <Header />
+
+      <NavBar />
 
 
 

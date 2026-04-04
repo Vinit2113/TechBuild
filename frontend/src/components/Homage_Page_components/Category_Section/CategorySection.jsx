@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import 'remixicon/fonts/remixicon.css';
 import catSecImg from '../../../assets/hero_section/category_product.png';
 import './categorysection.css';
@@ -10,17 +11,15 @@ const CategorySection = () => {
           <div className="category-header-container">
             <ul>
               <li>
-                <a href="#" className="category-link">
+                <Link to="/product/list" className="category-link">
                   <div className="category-link-icon-container">
                     <i className="ri-shapes-line"></i>
                   </div>
                   <span> All Products </span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="view-all">
-                  View all
-                </a>
+                <Link to='/product/list' className="view-all">View all</Link>
               </li>
             </ul>
           </div>
