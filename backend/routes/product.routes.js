@@ -7,11 +7,12 @@ const createProduct = require("../controller/products/insertProduct.controller")
 const listProducts = require("../controller/products/listProduct.controller");
 const getAllProductsWithImages = require("../controller/products/wholeProductList.controller");
 const getProductsByCategory = require("../controller/products/getProductWithCat.controller");
+const getAllProductsWithImagesAndCategory = require("../controller/products/wholeProductList.controller");
 
 // 🔹 CREATE
 router.post("/insert", tokenVerification, isAdmin, createProduct);
 router.get("/list", listProducts);
-router.get("/all-list", getAllProductsWithImages);
+router.get("/all-list", getAllProductsWithImagesAndCategory);
 router.get("/cat-list/:category_id", getProductsByCategory);
 
 module.exports = router;
