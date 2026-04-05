@@ -1,11 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import productImage from '../../../assets/product_list/product_filter_section_product_card_img.png';
 import './productcard.css';
 
 const ProductCard = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+
+  const handleView = (id) => {
+    navigate(`/product/${id}`)
+  }
 
   const { catId } = useParams();
 
@@ -86,7 +91,7 @@ const ProductCard = () => {
                 </p>
 
                 <div className='button-group'>
-                  <button className='view-button'>View</button>
+                  <button className='view-button' onClick={() => handleView(product.product_id)} >View</button>
                   <button className='cart-button'>
                     <i className="ri-shopping-cart-2-line header-icon"></i>
                   </button>

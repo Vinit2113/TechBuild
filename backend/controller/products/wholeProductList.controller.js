@@ -1,8 +1,11 @@
 const { poolConn } = require("../../db/dbConfig");
 
-const getAllProductsWithFullDetails = async (req, res) => {
+const getProductByIdWithFullDetails = async (req, res) => {
   try {
-    const [rows] = await poolConn.execute(`
+    const { id } = req.params;
+
+    const [rows] = await poolConn.execute(
+      `
       SELECT 
         p.product_id,
         p.product_name,
@@ -20,7 +23,7 @@ const getAllProductsWithFullDetails = async (req, res) => {
         c.cat_description,
         p.brand_id,
         b.brand_name,
-        
+
         pm.media_id,
         pm.media_type,
         pm.media_url,
@@ -63,15 +66,23 @@ const getAllProductsWithFullDetails = async (req, res) => {
         AND av.deleted_at IS NULL
 
       WHERE p.softDelete = 0
-      ORDER BY p.product_id DESC, pm.display_order ASC
-    `);
+      AND p.product_id = ?
 
-    const productMap = {};
+      ORDER BY pm.display_order ASC
+      `,
+      [id],
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    let product = null;
 
     rows.forEach((row) => {
-      // Initialize product object if not already
-      if (!productMap[row.product_id]) {
-        productMap[row.product_id] = {
+      // Initialize product once
+      if (!product) {
+        product = {
           product_id: row.product_id,
           product_name: row.product_name,
           slug: row.slug,
@@ -93,8 +104,6 @@ const getAllProductsWithFullDetails = async (req, res) => {
           attributes: [],
         };
       }
-
-      const product = productMap[row.product_id];
 
       // Add image
       if (
@@ -126,7 +135,7 @@ const getAllProductsWithFullDetails = async (req, res) => {
 
       // Add attribute
       if (
-        row.attribute_id &&
+        row.attribute_value_id &&
         !product.attributes.some(
           (attr) => attr.attribute_value_id === row.attribute_value_id,
         )
@@ -140,17 +149,14 @@ const getAllProductsWithFullDetails = async (req, res) => {
       }
     });
 
-    const result = Object.values(productMap);
-
     return res.status(200).json({
-      message: "Products fetched successfully",
-      count: result.length,
-      data: result,
+      message: "Product fetched successfully",
+      data: product,
     });
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error("Error fetching product:", error);
     return res.status(500).json({ message: "INTERNAL SERVER ERROR" });
   }
 };
 
-module.exports = getAllProductsWithFullDetails;
+module.exports = getProductByIdWithFullDetails;

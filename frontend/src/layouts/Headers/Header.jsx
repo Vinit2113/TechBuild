@@ -17,7 +17,6 @@ const Header = () => {
 
   // GET THE SUER NAME FORM TOKEN CONVERT IT TO JSON OBJECT THEN DISPLAY
   const user = JSON.parse(localStorage.getItem("user"))
-  console.log("User object: ", user);
 
   // TO DISPALY THE NAME IN THE PROPER FORMAT
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);

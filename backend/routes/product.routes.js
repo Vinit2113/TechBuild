@@ -12,7 +12,7 @@ const getAllProductsWithImagesAndCategory = require("../controller/products/whol
 // 🔹 CREATE
 router.post("/insert", tokenVerification, isAdmin, createProduct);
 router.get("/list", listProducts);
-router.get("/all-list", getAllProductsWithImagesAndCategory);
+router.get("/:id", getAllProductsWithImagesAndCategory);
 router.get("/cat-list/:category_id", getProductsByCategory);
 
 module.exports = router;

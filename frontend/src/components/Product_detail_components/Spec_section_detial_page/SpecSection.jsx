@@ -1,6 +1,12 @@
-import './specSection.css'
+import './specSection.css';
 
-const SpecSection = () => {
+const SpecSection = ({ product }) => {
+  console.log("Heere is specs", product);
+
+  if (!product) return null;
+
+  const basicSpecs = product.specifications || [];
+
   return (
     <>
       <div className="product-specification-container">
@@ -13,22 +19,12 @@ const SpecSection = () => {
         <div className="specification-lists">
           <h3>Key specs</h3>
           <ul>
-            <li>
-              <span>Graphics Coprocessor</span>
-              <span>NVIDIA GeForce GT 740</span>
-            </li>
-            <li>
-              <span>Memory Size</span>
-              <span>4 GB</span>
-            </li>
-            <li>
-              <span>Memory Type</span>
-              <span>GDDR3</span>
-            </li>
-            <li>
-              <span>Memory Interface Bus</span>
-              <span>128-bit</span>
-            </li>
+            {basicSpecs.map((spec) => (
+              <li key={spec.spec_id}>
+                <span>{spec.spec_name}</span>
+                <span>{spec.spec_value}</span>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

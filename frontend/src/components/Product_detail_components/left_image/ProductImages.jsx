@@ -1,57 +1,75 @@
-import { useState } from 'react';
-import img1 from '../../../assets/product-detail-images/graphic-card-img-1.png';
-import img2 from '../../../assets/product-detail-images/graphic-card-img-2.jpg';
-import img3 from '../../../assets/product-detail-images/graphic-card-img-3.jpg';
-import img4 from '../../../assets/product-detail-images/graphic-card-img-4.jpg';
-import prodVid1 from '../../../assets/product-detail-images/Generate_Processor_Video.mp4';
+import { useEffect, useState } from "react";
+import "./pdLeftImage.css";
 
-import './pdLeftImage.css';
+const ProductImages = ({ product }) => {
+  const [mediaItems, setMediaItems] = useState([]);
+  const [mainMedia, setMainMedia] = useState(null);
 
-const thumbnails = [
-  { type: 'image', src: img1, alt: 'Graphic Card 1' },
-  { type: 'image', src: img2, alt: 'Graphic Card 2' },
-  { type: 'image', src: img3, alt: 'Graphic Card 3' },
-  { type: 'image', src: img4, alt: 'Graphic Card 4' },
-  { type: 'video', src: prodVid1, alt: 'Graphic Card Video' },
-];
+  useEffect(() => {
+    if (!product) return;
 
-const ProductImages = () => {
-  const [mainMedia, setMainMedia] = useState(thumbnails[0]);
+    const items = [];
 
-  const handleThumbnailClick = (thumb) => {
-    setMainMedia(thumb);
-  };
+    // Add images from backend
+    product.images?.forEach((img) => {
+      items.push({
+        type: "image",
+        src: img.media_url.startsWith("http")
+          ? img.media_url
+          : `http://localhost:54807${img.media_url}`, // handle relative URLs
+        alt: img.alt_text || "Product Image",
+      });
+    });
+
+    // Add videos if available (currently backend does not provide, but kept for future)
+    product.videos?.forEach((vid) => {
+      items.push({
+        type: "video",
+        src: vid.media_url.startsWith("http")
+          ? vid.media_url
+          : `http://localhost:54807${vid.media_url}`,
+        alt: vid.alt_text || "Product Video",
+      });
+    });
+
+    setMediaItems(items);
+
+    // Set first item as main media by default
+    if (items.length > 0) setMainMedia(items[0]);
+  }, [product]);
+
+  const handleThumbnailClick = (item) => setMainMedia(item);
+
+  if (!product) return <p>Loading…</p>;
 
   return (
     <div className="product-images-container">
+      {/* Thumbnails */}
       <div className="thumbnail-images-container">
-        {thumbnails.map((thumb, index) => (
-          <div key={index} className="thumbnail-img">
-            {thumb.type === 'image' ? (
-              <img
-                src={thumb.src}
-                alt={thumb.alt}
-                className={mainMedia.src === thumb.src ? 'active' : ''}
-                onClick={() => handleThumbnailClick(thumb)}
-              />
+        {mediaItems.map((item, index) => (
+          <div
+            key={index}
+            className={`thumbnail-img ${mainMedia?.src === item.src ? "active-thumb" : ""
+              }`}
+            onClick={() => handleThumbnailClick(item)}
+          >
+            {item.type === "image" ? (
+              <img src={item.src} alt={item.alt} />
             ) : (
-              <video
-                src={thumb.src}
-                className={mainMedia.src === thumb.src ? 'active' : ''}
-                onClick={() => handleThumbnailClick(thumb)}
-                muted
-                preload="metadata"
-              />
+              <video src={item.src} muted preload="metadata" />
             )}
           </div>
         ))}
       </div>
 
+      {/* Main Display */}
       <div className="main-images">
-        {mainMedia.type === 'image' ? (
-          <img src={mainMedia.src} alt="Main Product" />
-        ) : (
+        {mainMedia?.type === "image" ? (
+          <img src={mainMedia.src} alt={mainMedia.alt} />
+        ) : mainMedia?.type === "video" ? (
           <video src={mainMedia.src} controls autoPlay loop />
+        ) : (
+          <p>No media available</p>
         )}
       </div>
     </div>
