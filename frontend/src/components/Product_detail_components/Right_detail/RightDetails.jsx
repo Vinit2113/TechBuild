@@ -1,12 +1,17 @@
-import './rightdetaildesign.css'
+import './rightdetaildesign.css';
 
-const RightDetails = () => {
+const RightDetails = ({ product }) => {
+  console.log(product);
+
+
+  if (!product) return <p>Loading...</p>
+
   return (
     <>
       <div className="product-info-container">
         <div className="product-desc">
-          <p>
-            ZEBRONICS GT740-4GD3 Graphics Card, pci_e_x16 Powered by NVIDIA, 4GB GDDR3, 128-Bit, Pcie3.0, Upto 2560 X 1440 @60Hz, Multiple Outputs-HDMI | DVI | VGA, Physx Support, Heatsink with Fan, High Efficiency
+          <p>{product.product_name}, {product.short_description}
+            {product.full_description}
           </p>
         </div>
 
@@ -24,10 +29,10 @@ const RightDetails = () => {
         </div>
 
         <div className="price-block">
-          <span className="original-price">₹5,999</span>
+          <span className="original-price">₹{product.original_price}</span>
           <div className="current-price-row">
-            <span className="discounted-price">₹3,400</span>
-            <span className="discount-badge">34.99% OFF</span>
+            <span className="discounted-price">₹{product.current_price}</span>
+            <span className="discount-badge">{product.discount_percentage}% OFF</span>
           </div>
         </div>
 

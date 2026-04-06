@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
 import HomePage from './pages/Home/HomePage'
 import LoginPage from './pages/Login/LoginPage'
-import ProductListPage from './pages/ProductList/ProductListPage'
-import SignupPage from './pages/Signup/SignupPage'
 import DetailedProduct from './pages/product_detail/DetailedProduct'
+import ProductListPage from './pages/ProductList/ProductListPage'
+import CartPage from './pages/ShoppingCart/CartPage'
+import SignupPage from './pages/Signup/SignupPage'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/product/list" element={<ProductListPage />} />
           <Route path="/product/list/:catId" element={<ProductListPage />} />
           <Route path="/product/:id" element={<DetailedProduct />} />
+          <Route path="/product/cart" element={<CartPage />} />
         </Routes>
       </BrowserRouter>
     </>

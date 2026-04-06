@@ -14,6 +14,7 @@ const productSpecsRoutes = require("./routes/productSpecific.routes");
 const productAttributeRoutes = require("./routes/attribute.routes");
 const productAttributeVauesRoutes = require("./routes/attributeValues.routes");
 const productAttributeMappingRoutes = require("./routes/productAttributeMapping.routes");
+const cartRoutes = require("./routes/cart.routes");
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
@@ -36,6 +37,8 @@ app.use("/product-specs/", productSpecsRoutes);
 app.use("/product-attribute/", productAttributeRoutes);
 app.use("/product-attribute-values/", productAttributeVauesRoutes);
 app.use("/product-attribute-mapping/", productAttributeMappingRoutes);
+app.use("/product-attribute-mapping/", productAttributeMappingRoutes);
+app.use("/product-cart/", cartRoutes);
 
 app.listen(port, () => {
   console.log(`SERVER IS RUNNING ON PORT ${port}`);

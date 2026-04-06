@@ -1,0 +1,101 @@
+
+
+
+/* header section css start */
+.page {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-top: 0rem;
+  /* background-color: rebeccapurple; */
+}
+
+.breadcrumb-container-cart {
+  /* background-color: lightblue; */
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+
+}
+
+.breadcrumb-container-cart span:last-child {
+  font-weight: 700;
+  color: #1E293B;
+  font-size: 1rem;
+}
+
+.breadcrumb-container-cart a {
+  transition: all 0.4s ease;
+  font-size: 1rem;
+}
+
+.breadcrumb-container-cart a:hover {
+  font-weight: 700;
+  color: #1E293B
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 24px;
+  align-items: start;
+}
+
+
+
+/* --- Main Container --- */
+
+/* order summar css block strats  */
+
+
+/* --- Shipping & Trust Elements --- */
+.shipping-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.shipping-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 12px;
+}
+
+.trust-icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.trust-icon {
+  color: #9ca3af;
+  font-size: 20px;
+  transition: color 0.15s;
+  cursor: pointer;
+}
+
+.trust-icon:hover {
+  color: #6b7280;
+}
+
+/* order summary css block ends  */
+
+
+/* trust strip css block starts */
+
+
+/* trust strip css block ends  */
+
+
+
+

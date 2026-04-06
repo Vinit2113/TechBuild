@@ -9,6 +9,7 @@ const product_specification_table_query = require("../models/product_Specificati
 const attributeTableQuery = require("../models/attribute.model");
 const attributeValueTableQuery = require("../models/attributeValues.model");
 const productAttributeMapping = require("../models/productAttribute.model");
+const cartTableQuery = require("../models/cart.model");
 
 require("dotenv").config();
 
@@ -33,6 +34,7 @@ const tables = [
   attributeTableQuery,
   attributeValueTableQuery,
   productAttributeMapping,
+  cartTableQuery,
 ];
 (async () => {
   try {
