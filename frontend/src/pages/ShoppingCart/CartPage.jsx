@@ -14,8 +14,13 @@ import './cartpagedesign.css';
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [totals, setTotals] = useState({
+    subtotal: 0,
+    discount: 0,
+    gst: 0,
+    total: 0,
+  });
 
-  // Fetch cart items
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
@@ -23,15 +28,24 @@ const CartPage = () => {
         const response = await axios.get('http://localhost:54807/product-cart/show', {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setCartItems(response.data.data);
-        toast.success('Cart items loaded successfully!');
+
+        setCartItems(response.data.data || []);
+        setTotals(response.data.totals || {
+          subtotal: 0,
+          discount: 0,
+          gst: 0,
+          total: 0,
+        });
+
+        toast.success('Cart loaded successfully!');
       } catch (error) {
         console.error(error);
-        toast.warn(error.response?.data?.message || 'Failed to load cart items');
+        toast.error(error.response?.data?.message || 'Failed to load cart items');
       } finally {
-        setLoading(false);
+        setLoading(false); // ✅ important
       }
     };
+
     fetchCartItems();
   }, []);
 
@@ -39,38 +53,49 @@ const CartPage = () => {
   const handleRemove = async (product_id) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:54807/product-cart/remove/${product_id}`, {
+      const response = await axios.delete(`http://localhost:54807/product-cart/remove/${product_id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+
       toast.success(response.data.message);
 
+      // Update cart items and totals after removal
       setCartItems((prevItems) => prevItems.filter((item) => item.product_id !== product_id));
+      setTotals(response.data.totals || totals); // update totals from backend if returned
     } catch (error) {
       console.error(error);
       toast.error(error.response?.data?.message || 'Failed to remove item');
     }
   };
 
-  // Calculate totals: subtotal, discount, GST (18%), total
-  const calculateTotals = () => {
-    let subtotal = 0;
-    let discount = 0;
+  const handleQuantityChange = async (product_id, newQuantity) => {
+    const item = cartItems.find(i => i.product_id === product_id);
+    if (!item) return;
 
-    cartItems.forEach((item) => {
-      const itemTotal = item.current_price * item.quantity;
-      subtotal += itemTotal;
+    // Only update if the quantity actually changed
+    if (newQuantity === item.quantity || newQuantity < 1) return;
 
-      const itemDiscount = ((item.discount_percentage || 0) / 100) * itemTotal;
-      discount += itemDiscount;
-    });
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.put(
+        `http://localhost:54807/product-cart/update/${product_id}`,
+        { quantity: newQuantity },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
 
-    const gst = 0.18 * (subtotal - discount);
-    const total = subtotal - discount;
+      // Update cart items locally
+      setCartItems(prevItems =>
+        prevItems.map(i =>
+          i.product_id === product_id ? { ...i, quantity: newQuantity } : i
+        )
+      );
 
-    return { subtotal, discount, gst, total };
+      setTotals(response.data.totals);
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to update quantity");
+    }
   };
-
-  const { subtotal, discount, gst, total } = calculateTotals();
 
   return (
     <>
@@ -88,13 +113,14 @@ const CartPage = () => {
             cartItems={cartItems}
             loading={loading}
             handleRemove={handleRemove}
+            handleQuantityChange={handleQuantityChange}
           />
 
           <CartOrderSummary
-            subtotal={subtotal}
-            discount={discount}
-            gst={gst}
-            total={total}
+            subtotal={totals.subtotal}
+            discount={totals.discount}
+            gst={totals.gst}
+            total={totals.total}
           />
         </div>
 

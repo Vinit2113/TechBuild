@@ -1,6 +1,6 @@
 import './cartlayoutdesign.css';
 
-const CartLayoutComponent = ({ cartItems, loading, handleRemove }) => {
+const CartLayoutComponent = ({ cartItems, loading, handleRemove, handleQuantityChange }) => {
   if (loading) return <div>Loading cart items...</div>;
 
   if (cartItems.length === 0) return <p>Your cart is empty.</p>;
@@ -24,7 +24,36 @@ const CartLayoutComponent = ({ cartItems, loading, handleRemove }) => {
               <div className="item-name">
                 <p>{item.product_name}</p>
               </div>
-              <div className="item-quantity">Quantity: {item.quantity}</div>
+
+
+              <div className="item-quantity">
+                <button
+                  className="qty-btn minus"
+                  onClick={() => handleQuantityChange(item.product_id, item.quantity - 1)}
+                  disabled={item.quantity <= 1}
+                >
+                  -
+                </button>
+
+                <input
+                  type="number"
+                  value={item.quantity}
+                  min="1"
+                  className="qty-input"
+                  onChange={(e) =>
+                    handleQuantityChange(item.product_id, Number(e.target.value))
+                  }
+                />
+
+                <button
+                  className="qty-btn plus"
+                  onClick={() => handleQuantityChange(item.product_id, item.quantity + 1)}
+                >
+                  +
+                </button>
+              </div>
+
+
             </div>
             <div className="item-price">
               <span>₹{item.current_price.toLocaleString()}</span>

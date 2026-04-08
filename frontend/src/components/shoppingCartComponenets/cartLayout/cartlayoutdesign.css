@@ -52,6 +52,66 @@
   margin-bottom: 16px;
 }
 
+.item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  /* Keeps buttons touching the input for a "pill" or "bar" look */
+  margin-top: 10px;
+}
+
+/* Base style for plus/minus buttons */
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  background-color: #f1f5f9;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.qty-btn:hover {
+  background-color: #e2e8f0;
+}
+
+.minus {
+  border-radius: 4px 0 0 4px;
+}
+
+.plus {
+  border-radius: 0 4px 4px 0;
+}
+
+/* Styling the number display */
+.qty-input {
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: bold;
+}
+
+/* Removes spinners in Chrome, Safari, Edge */
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.qty-btn:active {
+  background-color: #cbd5e1;
+  transform: scale(0.95);
+}
+
 .group-header {
   display: flex;
   align-items: center;
