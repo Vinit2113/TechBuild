@@ -1,6 +1,10 @@
-import './cartOrderSummaryDesign.css'
+import './cartOrderSummaryDesign.css';
 
-const CartOrderSummary = () => {
+const CartOrderSummary = ({ subtotal, discount, gst, total }) => {
+  // Format numbers to Indian currency style with commas and ₹ symbol
+  const formatCurrency = (amount) =>
+    `₹${amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+
   return (
     <>
       <div className="order-summary">
@@ -8,7 +12,7 @@ const CartOrderSummary = () => {
 
         <div className="summary-row">
           <span className="summary-label">Subtotal</span>
-          <span className="summary-value">₹41,300</span>
+          <span className="summary-value">{formatCurrency(subtotal)}</span>
         </div>
 
         <div className="summary-row">
@@ -18,12 +22,12 @@ const CartOrderSummary = () => {
 
         <div className="summary-row discount-row">
           <span className="summary-label">Discount (PROMO)</span>
-          <span className="summary-value discount-text">-₹1,300</span>
+          <span className="summary-value discount-text">-{formatCurrency(discount)}</span>
         </div>
 
         <div className="summary-row" style={{ marginBottom: 0 }}>
           <span className="summary-label">GST (18% Included)</span>
-          <span className="summary-value">₹6,300</span>
+          <span className="summary-value">{formatCurrency(gst)}</span>
         </div>
 
         <hr className="summary-divider" />
@@ -31,8 +35,8 @@ const CartOrderSummary = () => {
         <div className="total-block">
           <span className="total-label">Total</span>
           <div className="total-right">
-            <div className="total-usd">Approx $480 USD</div>
-            <div className="total-amount">₹40,000</div>
+            <div className="total-usd">Approx ${(total / 82).toFixed(2)} USD</div>
+            <div className="total-amount">{formatCurrency(total)}</div>
           </div>
         </div>
 
@@ -60,7 +64,7 @@ const CartOrderSummary = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CartOrderSummary
+export default CartOrderSummary;

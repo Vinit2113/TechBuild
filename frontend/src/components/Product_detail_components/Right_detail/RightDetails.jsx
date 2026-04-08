@@ -1,10 +1,40 @@
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './rightdetaildesign.css';
 
 const RightDetails = ({ product }) => {
-  console.log(product);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const token = localStorage.getItem("token");
 
+  const handleAddToCart = async () => {
+    if (!token) {
+      toast.warning("You must be logged in to add to cart!");
+      return;
+    }
 
-  if (!product) return <p>Loading...</p>
+    try {
+      await axios.post(
+        `http://localhost:54807/product-cart/add/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      toast.success("Product added to cart!");
+      navigate('/product/cart');
+    } catch (err) {
+      console.error("Full error:", err.response?.data || err.message);
+      toast.error("Failed to add product to cart!");
+    }
+  };
+
+  if (!product) return <p>Loading...</p>;
 
   return (
     <>
@@ -38,7 +68,7 @@ const RightDetails = ({ product }) => {
 
         <div className="cart-save-container">
           <div className="cart-container">
-            <button className="add-to-cart-btn">
+            <button className="add-to-cart-btn" onClick={handleAddToCart}>
               <span>Add to cart</span>
               <i className="ri-shopping-cart-2-line"></i>
             </button>
@@ -51,8 +81,20 @@ const RightDetails = ({ product }) => {
           </div>
         </div>
       </div>
-    </>
-  )
-}
 
-export default RightDetails
+      {/* Toast Container must be rendered */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
+    </>
+  );
+};
+
+export default RightDetails;

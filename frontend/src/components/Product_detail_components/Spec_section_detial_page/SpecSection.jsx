@@ -1,7 +1,6 @@
 import './specSection.css';
 
 const SpecSection = ({ product }) => {
-  console.log("Heere is specs", product);
 
   if (!product) return null;
 

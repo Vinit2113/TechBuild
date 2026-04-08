@@ -1,7 +1,6 @@
 import './specsidebar.css';
 
 const SpecSidebar = ({ isOpen, onClose, product }) => {
-  console.log("Sidebar Sec: ", product);
 
   if (!product) return null;
 

@@ -54,7 +54,7 @@ const Header = () => {
                 <span className="pc-build">Build Your PC</span>
               </div>
             </button>
-            <div className="header-icon-style">
+            <div className="header-icon-style" onClick={() => navigate("/product/cart")}>
               <BsCart3 />
             </div>
             {user ? (
