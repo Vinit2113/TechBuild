@@ -9,6 +9,7 @@ import CartOrderSummary from '../../components/shoppingCartComponenets/cartOrder
 import Footer from '../../layouts/Footers/Footer';
 import Header from '../../layouts/Headers/Header';
 
+import NavBar from '../../layouts/Navbar/NavBar';
 import './cartpagedesign.css';
 
 const CartPage = () => {
@@ -100,6 +101,8 @@ const CartPage = () => {
   return (
     <>
       <Header />
+      
+      <NavBar />
 
       <div className="page">
         <div className="breadcrumb-container-cart">
