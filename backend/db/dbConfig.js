@@ -11,6 +11,8 @@ const attributeValueTableQuery = require("../models/attributeValues.model");
 const productAttributeMapping = require("../models/productAttribute.model");
 const cartTableQuery = require("../models/cart.model");
 const { userAddressQuery } = require("../models/userAddress.model");
+const { paymentTableQuery } = require("../models/payments.model");
+const { createOrderTableQuery } = require("../models/orders.model");
 
 require("dotenv").config();
 
@@ -37,6 +39,8 @@ const tables = [
   productAttributeMapping,
   cartTableQuery,
   userAddressQuery,
+  createOrderTableQuery,
+  paymentTableQuery
 ];
 (async () => {
   try {
