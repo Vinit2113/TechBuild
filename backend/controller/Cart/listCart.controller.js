@@ -1,7 +1,6 @@
 const { poolConn } = require("../../db/dbConfig");
 const { calculateCartTotals } = require("./cartHalpers");
 
-
 const getProductList = async (req, res) => {
   try {
     const user_id = req.user.id;

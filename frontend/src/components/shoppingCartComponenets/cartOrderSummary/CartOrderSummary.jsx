@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router';
 import './cartOrderSummaryDesign.css';
 
 const CartOrderSummary = ({ subtotal, discount, gst, total }) => {
+
+  const navigate = useNavigate()
   // Format numbers to Indian currency style with commas and ₹ symbol
   const formatCurrency = (amount) =>
     `₹${amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
@@ -23,7 +26,7 @@ const CartOrderSummary = ({ subtotal, discount, gst, total }) => {
         <div className="summary-row discount-row">
           <span className="summary-label">Discount (PROMO)</span>
           <span className="summary-value discount-text">-{formatCurrency(discount)}</span>
-        </div>
+        </div> 
 
         <div className="summary-row" style={{ marginBottom: 0 }}>
           <span className="summary-label">GST (18% Included)</span>
@@ -52,7 +55,7 @@ const CartOrderSummary = ({ subtotal, discount, gst, total }) => {
           <button className="btn-apply">Apply</button>
         </div>
 
-        <button className="btn-checkout">
+        <button className="btn-checkout" onClick={() => navigate("/product/checkout")}>
           <i className="ri-lock-line"></i>
           Proceed to Checkout
         </button>

@@ -101,7 +101,7 @@ const CartPage = () => {
   return (
     <>
       <Header />
-      
+
       <NavBar />
 
       <div className="page">
